@@ -1,0 +1,41 @@
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+bool is_palindrome(char* word);
+
+int main()
+{
+    int str_len; // Длина строки
+    scanf("%d", &str_len);
+    char* str=(char*)calloc(str_len+1, sizeof(char));
+    scanf("%s", str);
+    // Выделить память и считать строку
+
+    if (is_palindrome(str)){
+        printf("true");
+    }else{
+        printf("false");
+    }
+    free(str);
+    return 0;
+}
+
+// Дописать функцию
+bool is_palindrome(char* word){
+    char *ptr_start = word;          // Указатель на начало строки
+    char *ptr_end = word + strlen(word) - 1; // Указатель на конец строки
+
+    while (ptr_start < ptr_end)
+    {
+        if (*ptr_start != *ptr_end) {
+            return false;
+        }
+
+        ptr_start++;
+        ptr_end--;
+    }
+
+    return true;
+}
